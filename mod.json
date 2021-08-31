@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ncaa-try-2",
+  "private_key_id": "3cecd1eb0266a842a8be1107d8b58a4affffb482",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCvTvfAJyrQLeLe\n6log2sMle6sNGwHvBQa2rpQNoHupHJxgXIJjRW1wOTvJXalGxPK42DaFGtRQr9Zl\nKeGfU1m9av32ff9DJOM3gb+U/TF9akp0PuE2w0V6UsOCUX5pZIxxZGNoHnIUU67a\nopuhGKvJ3Dfzko+zzC09k/8NnEuW0krJh2tU9trod9sBRE43fgNMWciwCICh/yFO\nQLTU13gg54Q/+ItMAN7oBaVpEvVcFNe8/dq1QkHs22uzHMDADer0H4gws3fBSBrk\ns7VGhFvW1G4aAqj6WbRgYbKjl2yULj+A2drbtTEYm7CH10Cg6rndS/KfoMOnatG3\n4X5vYi7DAgMBAAECggEACd0WlLAsReeFb7Q3ey7z2R5BL8AvEETAuoya3FcFCvnT\nu2dysQuZ+1atDEjOmm9Z/MtL6s22PnTDFyp145U4ymIq631Uj6TGrm8IpkuTE9+X\nVHBC4BlSkm32F1UzsjhfEo43oNPkG7KtqhpWFiIhbRhZgyt7r5eAWb02/Fjb6lHP\nGg3KKxCp1ydzSO9U4cUt9YqUn1teXJ2qfyvg17RjDNeVzoGvngtwkVCxyZAtuClJ\nR7bDHn9A/zy/TYQSeTsFYhQUztd7R3FWwrmxQWjzj+fg6pW88mPD+3aYaZpWhx3X\n/PgUvIMJ1yMvQof4a9q7aAaK84t6UhtaV8PEEkd9IQKBgQDughyIONXUYFe7OUka\n3zxU8f1/bu533EdTBmNJNyyeJDtlxOPWHBK01/Ih/0VrgjbB2/rF89jKJlqbRiYy\nMIJ5ogQwcuKbOiW/sL0RkshQHTgwomluHTDBJLfQy/iwjzyOlI58wg1ACOlFVifi\ngbsl3j7agQVV36Kd6ZbEbCn/kwKBgQC8Kk7WcV4ZTZ8Ef3jU/P/QoH+ZORq/gGpY\nxLGjvaD/B85F6H09gJXFUMNADXSOj/FXXHYzSOemOouGFI7rR0erHhpA8oubolHt\nLD1YBWR5ad1/pzT00YfCevs3SpsvRqL4FVkQm5vPMno5z4BQdQbj9rIiZwCMtCEl\nooS45gyyEQKBgDTh7neZunebYPhnLDlkE9l1ylIuA3vaAIp9GRiLvj3WJMFc1XOM\nx+0HEG3PTtIWjhOPtducRI4V0PMqq59nOBbGAI3Je0sVqncFNfamh/mTcPj/mcbL\nfBrnDEakYyCqsa+farRoxk1TbH1uK+vB/f/YdjE2eDthGYpP15j3rpw3AoGACL4a\nfaI00g4mNkpJ7fN3W1UpuI/Lq1wnFMrGyinUYiUVs2/S6dmgm9NdzwsRAFK1zu5P\n26AmizWrJ+aqoUnljZDPfXcHf4qyLcfhbcaKXY3KqdS2BC38FdAq/e2seizZA5fS\nVJA2VBEvVqJKfvKBCHR84FZS0zbHV31Ol1yw+FECgYBhTRFDgv6trcVQB13fZgus\nyffJgInRFr73UsVzMI5BD4F4Gq0eVxpmB4HQaeA75hryFHKiHcz+DM8ATwRfwnxJ\nbstkQPW90x0/kOfJK7k3XwjbDfGXltNp0w+8wY0upa0aiI4BzHCf3WoBJlFCBeVm\nYct+EU51A0xtHdM+2n4mXA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "ncaa2-402@ncaa-try-2.iam.gserviceaccount.com",
+  "client_id": "111694284084234214411",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ncaa2-402%40ncaa-try-2.iam.gserviceaccount.com"
+}
