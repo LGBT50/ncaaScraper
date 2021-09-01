@@ -26,7 +26,7 @@ def scraperFunc():
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     #https://stackoverflow.com/questions/65443542/why-doesnt-instagram-work-with-selenium-headless-chrome
     #This section is needed so that instagram does not block you from accessing the page
-    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     chrome_options.add_argument("user-data-dir=/tmp/tarun")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
@@ -43,7 +43,9 @@ def scraperFunc():
     for q in range(1, 10):
         for z in range(1, 7, 2):
             for x in range(2,17):
-                if q == 1 and z<5 and x < 6:
+                if q == 1 and (z<5):
+                    print(z)
+                    print(x)
                     print("next")
                 else:
                     dict1 = {"q":q, "z":z, "x":x}
@@ -62,9 +64,7 @@ def scraperFunc():
                         try:
                             driver.get(link)
                             time.sleep(2) 
-                            while link != get_url:
-                                driver.get(link)
-                                time.sleep(3) 
+                           
                             try:              
                                 element = driver.find_element_by_xpath('/html/body/div[4]/aside/div/div[3]/ul/li[1]/a').click()
                             except:
