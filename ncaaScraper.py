@@ -64,12 +64,9 @@ def scraperFunc():
                         try:
                             driver.get(link)
                             time.sleep(2) 
-                           
-                            try:              
-                                element = driver.find_element_by_xpath('/html/body/div[4]/aside/div/div[3]/ul/li[1]/a').click()
-                            except:
-                                time.sleep(10)
-                                element = driver.find_element_by_xpath('/html/body/div[4]/aside/div/div[3]/ul/li[1]/a').click()
+                            link.replace("", "/roster/")
+                                          
+                            driver.get(link+"")
                             time.sleep(2)
                             try:
                                 teamName = driver.find_element_by_xpath('//*[@id="PageTitle-header"]').text        
@@ -86,12 +83,9 @@ def scraperFunc():
 
                             print(division)
                             time.sleep(2)
-                            try:
-                                element = driver.find_element_by_xpath('/html/body/div[4]/aside/div/div[3]/ul/li[4]/a').click()
-                            except:
-                                time.sleep(10)
-                                element = driver.find_element_by_xpath('/html/body/div[4]/aside/div/div[3]/ul/li[4]/a').click()
-                            time.sleep(2)
+                            link = (link+"/roster/")
+                            driver.get(link)
+                            time.sleep(3)
                             for i in range(1, 100):
                                 print(i)
                                 dict2 = {"i":i}
