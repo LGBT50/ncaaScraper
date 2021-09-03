@@ -28,7 +28,7 @@ def scraperFunc():
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     #https://stackoverflow.com/questions/65443542/why-doesnt-instagram-work-with-selenium-headless-chrome
     #This section is needed so that instagram does not block you from accessing the page
-    #chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     chrome_options.add_argument("user-data-dir=/tmp/tarun")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
