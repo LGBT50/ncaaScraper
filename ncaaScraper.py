@@ -20,13 +20,15 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from webdriver_manager.chrome import ChromeDriverManager
 
+from bs import getLinks
+
 def scraperFunc():
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     #https://stackoverflow.com/questions/65443542/why-doesnt-instagram-work-with-selenium-headless-chrome
     #This section is needed so that instagram does not block you from accessing the page
-    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     chrome_options.add_argument("user-data-dir=/tmp/tarun")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
@@ -35,108 +37,82 @@ def scraperFunc():
     
     driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options) #For first time 
     driver.implicitly_wait(30)
-    driver.get('https://www.cbssports.com/collegebasketball/players')
-    print("success")
     Schools = []
     playerStats = []
     tempplayer = []
-    for q in range(1, 10):
-        for z in range(1, 7, 2):
-            for x in range(2,17):
-                if q == 1 and (z<5):
-                    print(z)
-                    print(x)
-                    print("next")
-                else:
-                    dict1 = {"q":q, "z":z, "x":x}
-                    try:
-                        print(q)
-                        print(z)
-                        print(x)
-                        #School = ('//*[@id="gridContainer"]/div/div[2]/div[1]/table[2]/tbody/tr[{q}]/td[{z}]/table/tbody/tr[{x}]/td/a').format_map(dict1)
-                        School = ('/html/body/div[4]/div[2]/div/div[2]/div[1]/table[2]/tbody/tr[{q}]/td[{z}]/table/tbody/tr[{x}]/td/a').format_map(dict1)
-                        #School = ('//*[@id="gridContainer"]/div/div[2]/div[1]/table[2]/tbody/tr[{q}]/td[{z}]/table/tbody/tr[{x}]/td/a').format_map(dict1)
-                        element = driver.find_element_by_xpath(School).text
-                        #print(element)
-                        link = driver.find_element_by_xpath(School).get_attribute("href")
-                        print(link)
-                        print(School)
-                        try:
-                            driver.get(link)
-                            time.sleep(2) 
-                            link.replace("", "/roster/")
-                                          
-                            driver.get(link+"")
-                            time.sleep(2)
-                            try:
-                                teamName = driver.find_element_by_xpath('//*[@id="PageTitle-header"]').text        
-                            except:
-                                time.sleep(10)
-                                teamName = driver.find_element_by_xpath('//*[@id="PageTitle-header"]').text
-                            print(teamName)
-                            time.sleep(2)
-                            try:
-                                division = driver.find_element_by_xpath('/html/body/div[4]/div/main/div[3]/div[1]/div/div/div/table/tbody/tr[2]/td[1]').text
-                            except:
-                                time.sleep(10)
-                                division = driver.find_element_by_xpath('/html/body/div[4]/div/main/div[3]/div[1]/div/div/div/table/tbody/tr[2]/td[1]').text
+    links = getLinks()
+    for link in links:
+        print("HERE")
+        link = "https://www.cbssports.com"+link
+        #driver.get(link)
+        time.sleep(2)
+        link = link.replace("/roster/", "")
+        print(link)
+        driver.get(link)
+        time.sleep(2)
+        try:
+            teamName = driver.find_element_by_xpath('//*[@id="PageTitle-header"]').text        
+        except:
+            time.sleep(10)
+            teamName = driver.find_element_by_xpath('//*[@id="PageTitle-header"]').text
+        print(teamName)
+        time.sleep(2)
+        try:
+            division = driver.find_element_by_xpath('/html/body/div[4]/div/main/div[3]/div[1]/div/div/div/table/tbody/tr[2]/td[1]').text
+        except:
+            time.sleep(10)
+            division = driver.find_element_by_xpath('/html/body/div[4]/div/main/div[3]/div[1]/div/div/div/table/tbody/tr[2]/td[1]').text
 
-                            print(division)
-                            time.sleep(2)
-                            link = (link+"/roster/")
-                            driver.get(link)
-                            time.sleep(3)
-                            for i in range(1, 100):
-                                print(i)
-                                dict2 = {"i":i}
-                                temp = []
-                                name1 = ('//*[@id="TableBase"]/div/div/table/tbody/tr[{i}]/td[2]/span[1]/span/a').format_map(dict2)
-                                number1 = ('//*[@id="TableBase"]/div/div/table/tbody/tr[{i}]/td[1]').format_map(dict2)
-                                homeSt1 = ('//*[@id="TableBase"]/div/div/table/tbody/tr[{i}]/td[3]').format_map(dict2)
-                                position1 = ('//*[@id="TableBase"]/div/div/table/tbody/tr[{i}]/td[7]').format_map(dict2)
-                                try:
-                                    name = driver.find_element_by_xpath(name1).get_attribute("href")
-                                    name = name.replace('https://www.cbssports.com/collegebasketball/players/playerpage/', '')
-                                    number = driver.find_element_by_xpath(number1).text
-                                    homeSt = driver.find_element_by_xpath(homeSt1).text
-                                    position = driver.find_element_by_xpath(position1).text
-                                    print("NAME:"+str(name))
-                                    print(number)
-                                    print(homeSt)
-                                    print(position)
+        print(division)
+        time.sleep(2)
+        link = (link+"/roster/")
+        driver.get(link)
+        time.sleep(3)
+        for i in range(1, 100):
+            print(i)
+            dict2 = {"i":i}
+            temp = []
+            name1 = ('//*[@id="TableBase"]/div/div/table/tbody/tr[{i}]/td[2]/span[1]/span/a').format_map(dict2)
+            number1 = ('//*[@id="TableBase"]/div/div/table/tbody/tr[{i}]/td[1]').format_map(dict2)
+            homeSt1 = ('//*[@id="TableBase"]/div/div/table/tbody/tr[{i}]/td[3]').format_map(dict2)
+            position1 = ('//*[@id="TableBase"]/div/div/table/tbody/tr[{i}]/td[7]').format_map(dict2)
+            try:
+                name = driver.find_element_by_xpath(name1).get_attribute("href")
+                name = name.replace('https://www.cbssports.com/collegebasketball/players/playerpage/', '')
+                number = driver.find_element_by_xpath(number1).text
+                homeSt = driver.find_element_by_xpath(homeSt1).text
+                position = driver.find_element_by_xpath(position1).text
+                print("NAME:"+str(name))
+                print(number)
+                print(homeSt)
+                print(position)
 
 
-                                    
-
-                                    temp.append(name)
-                                    temp.append(number)
-                                    temp.append(position)
-                                    temp.append(division)
-                                    temp.append(teamName)
-                                    temp.append(homeSt)
-                                    playerStats.append(temp)
-                                    tempplayer.append(temp)
-
-                                    #print(("There are {i} players added").format_map(dict2))
-                                except Exception as e:
-                                    print(e)
-                                    print("No more athletes on this team")
-                                    df = pd.DataFrame((tempplayer), columns=['Name', 'Number', 'Positin', 'Division', 'teamName', 'HomeSt'])
-                                    print("ADDING TO GOOGLE SHEET!")
-                                    sendToGoogleSheets(df)
-                                    tempplayer = []
-                                    driver.get('https://www.cbssports.com/collegebasketball/players')
-                                    break
-                        except Exception as e:
-                            print(e)
-                            print('something went wrong in the first exception')
-                    except Exception as e:
-                        print(e)
-                        print("element does not exist")
-                        break
                 
 
-                            
+                temp.append(name)
+                temp.append(number)
+                temp.append(position)
+                temp.append(division)
+                temp.append(teamName)
+                temp.append(homeSt)
+                playerStats.append(temp)
+                tempplayer.append(temp)
+
+                #print(("There are {i} players added").format_map(dict2))
+            except Exception as e:
+                print(e)
+                print("No more athletes on this team")
+                df = pd.DataFrame((tempplayer), columns=['Name', 'Number', 'Positin', 'Division', 'teamName', 'HomeSt'])
+                print("ADDING TO GOOGLE SHEET!")
+                sendToGoogleSheets(df)
+                tempplayer = []
+                driver.get('https://www.cbssports.com/collegebasketball/players')
+                break
+
+
+
+            
     df = pd.DataFrame((playerStats), columns=['Name', 'Number', 'Positin', 'Division', 'teamName', 'HomeSt'])
     print(df)
     return df
