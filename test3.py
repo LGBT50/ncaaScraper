@@ -65,7 +65,7 @@ def getLink():
             links = []
         print(counter)
         counter += 1
-        time.sleep(5)
+        time.sleep(2)
 
 
 
