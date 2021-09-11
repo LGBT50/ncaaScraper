@@ -6,7 +6,7 @@ import pandas as pd
 
 
 
-def sendToGoogleSheets(df):
+def rGSheet():
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive',
             'https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/spreadsheets']
 
@@ -28,22 +28,31 @@ def sendToGoogleSheets(df):
 
     data = sheet.get_all_records()
     #print(len(data))
-    print(df)
     df1 = pd.DataFrame(data, columns=['Name', 'Number', 'Positin', 'Division', 'teamName', 'HomeSt'])
-    print("FIRST")
-    print(df1)
-    df1 = df1.append(df, ignore_index=True)
-    print("SECOND")
-    print(df1)
+    #print(df1)
+    #for x in df1["name"]:
+        #print(x)
 
-    #existing = gd.get_as_dataframe(sheet)
-    #updated = existing.append(df)
-    set_with_dataframe(sheet, df1)
-    #print(updated)
-    #tests
+    print(type(df1["Name"]))
+    list1 = df1['Name'].tolist()
+    #print(list1)
+    counter = 0
+    new = []
+    for x in list1:
+      
+        for c in x:
+            if c != "/":
+                x = x.replace(c, "")
+            if  c == "/":
+                x = x.replace(c, "")
+                print(x)
+                x = x.replace("-", " ") 
+                new.append(x)
+                break
 
-    #sheet.update_cell(1, 1, "You made it") #Write this message in first row and first column
 
-    #print(data)
+            
+    return new
+                
 
-    #set_with_dataframe(sheet, df1)
+    

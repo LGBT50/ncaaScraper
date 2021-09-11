@@ -5,6 +5,7 @@ import time
 
 from gSheet import sendToGoogleSheets
 from ncaaScraper import scraperFunc
+from googleSearch import instaLink
 
 
 #initializing app, api, and cors
@@ -20,11 +21,21 @@ class ncaa(Resource):
     def get(self):
         return "get"
 
+class getLink(Resource):
+    def post(self):
+        instaLink()
+        return "Success"
+    def get(self):
+        return "get"
+
 class Home(Resource):
     def get(self):
         return "Hello World!"
 api.add_resource(ncaa, "/ncaa")
 api.add_resource(Home, "/")
+api.add_resource(getLink, "/getLink")
+
+
 
 if __name__ == "__main__":
    application.run()
