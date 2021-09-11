@@ -48,9 +48,9 @@ def getLink():
             credentials = creds()
         res = requests.get(url, headers = credentials["head"], cookies = credentials["cookies"])
         if res == 200 or counter%50==0:
-            credentials = creds()
-            res = requests.get(url, headers = credentials["head"], cookies = credentials["cookies"])
+            time.sleep(60)
         soup = BeautifulSoup(res.text, "html.parser")
+        time.sleep(1)
     #output = []
 
         anchors = soup.find_all('a', {"href":True})
